@@ -22,11 +22,19 @@ function Navbar() {
       {/*    UPDATE     */}
       {isLoggedIn && (
         <>
+          <Link to={`/userpage/${user.name}`}>
+            {" "}
+            <button>{user.name}'s Home</button>
+          </Link>
+        </>
+      )}
+
+      {isLoggedIn && (
+        <>
           <Link to="/profile">
             <button>Profile</button>
           </Link>
           <button onClick={logOutUser}>Logout</button>
-          <span>{user && user.name}</span>
         </>
       )}
 
