@@ -11,7 +11,7 @@ function LoginPage(props) {
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
-  const { storeToken } = useContext(AuthContext);
+  const { storeToken, authenticateUser } = useContext(AuthContext);
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
@@ -27,6 +27,8 @@ function LoginPage(props) {
         // with the JWT string ->  response.data.authToken
         console.log("JWT token", response.data.authToken);
         storeToken(response.data.authToken);
+
+        authenticateUser();
 
         navigate("/"); // <== ADD
       })
