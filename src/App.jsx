@@ -1,14 +1,19 @@
 import { useState } from "react";
 import "./App.css";
+import Navbar from "./components/Navbar";
+import SignupPage from "./pages/SignupPage";
+import LoginPage from "./pages/LoginPage";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <div></div>
-      <p></p>
-    </>
+    <div className="App">
+      <Navbar />
+      <Routes>
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/login" element={<LoginPage />} />
+      </Routes>
+    </div>
   );
 }
 
