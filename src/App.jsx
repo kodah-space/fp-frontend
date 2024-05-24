@@ -9,12 +9,22 @@ import IsPrivate from "./components/IsPrivate"; // <== IMPORT
 import IsAnon from "./components/IsAnon"; // <== IMPORT
 import Profile from "./pages/Profile";
 import Imprint from "./pages/Imprint";
+import UserPage from "./pages/UserPage";
+import Homepage from "./pages/Homepage";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
       <Routes>
+        <Route
+          path="/"
+          element={
+            <IsAnon>
+              <Homepage />
+            </IsAnon>
+          }
+        />
         <Route
           path="/signup"
           element={
@@ -37,6 +47,14 @@ function App() {
             <IsAnon>
               <LoginPage />
             </IsAnon>
+          }
+        />
+        <Route
+          path="/users/:userId"
+          element={
+            <IsPrivate>
+              <UserPage />
+            </IsPrivate>
           }
         />
         <Route path="/imprint" element={<Imprint />} />
