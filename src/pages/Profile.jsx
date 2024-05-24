@@ -6,30 +6,57 @@ import { useNavigate } from "react-router-dom";
 const API_URL = "http://localhost:5005";
 
 function ProfilePage() {
-  const { user, storeToken, authenticateUser, isLoggedIn } =
+  const { user, storeToken, authenticateUser, setUser, isLoggedIn } =
     useContext(AuthContext);
+  const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
 
+  const handleEmailChange = (e) => setEmail(e.target.value);
+  const handleNameChange = (e) => setName(e.target.value);
+  const handleUserNameChange = (e) => setUserName(e.target.value);
+
+  const validateInputs = () => {
+    if (!userName || !email || !name) {
+      setErrorMessage("No fields can be empty");
+      return false;
+    }
+
+    const userNameRegex = /^[a-zA-Z0-9]{5,25}$/;
+    if (!userNameRegex.test(userName)) {
+      setErrorMessage("Provide a valid User ID.");
+      return false;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if (!emailRegex.test(email)) {
+      setErrorMessage("Provide a valid email address.");
+      return false;
+    }
+
+    return true;
+  };
+
   useEffect(() => {
     if (isLoggedIn && user) {
       setEmail(user.email);
       setName(user.name);
+      setUserName(user.userName);
     } else {
       navigate("/login");
     }
   }, [isLoggedIn, user, navigate]);
 
-  const handleEmailChange = (e) => setEmail(e.target.value);
-  const handleNameChange = (e) => setName(e.target.value);
-
   const handleProfileUpdate = (e) => {
     e.preventDefault();
+    if (!validateInputs()) {
+      return;
+    }
 
-    const requestBody = { email, name };
+    const requestBody = { email, name, userName };
 
     axios
       .put(`${API_URL}/auth/update`, requestBody, {
@@ -39,8 +66,11 @@ function ProfilePage() {
       })
       .then((response) => {
         // Assuming the response contains the updated user details
-        storeToken(response.data.authToken); // If a new token is provided
+        // storeToken(response.data.authToken); // If a new token is provided
+        // console.log(response.data.authToken);
         authenticateUser(); // Refresh the user data
+        // console.log(response.data.user);
+        // setUser(response.data.user);
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;
@@ -61,6 +91,8 @@ function ProfilePage() {
           onChange={handleNameChange}
         />
 
+        <br />
+
         <label>Email:</label>
         <input
           type="email"
@@ -68,7 +100,17 @@ function ProfilePage() {
           value={email}
           onChange={handleEmailChange}
         />
+        <br />
 
+        <br />
+        <label>User Name:</label>
+        <input
+          type="text"
+          name="name"
+          value={userName}
+          onChange={handleUserNameChange}
+        />
+        <br />
         <button type="submit">Update</button>
       </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}

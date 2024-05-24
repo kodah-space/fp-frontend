@@ -114,7 +114,7 @@ function SignupPage(props) {
         <label>Name:</label>
         <input type="text" name="name" value={name} onChange={handleName} />
         <br />
-        <label>Date of Birth (YYYY-MM-DD):</label>
+        <label>Date of Birth</label>
         <input
           type="date"
           name="dateOfBirth"
