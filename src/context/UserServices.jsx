@@ -13,8 +13,8 @@ class UserServicesClass {
     return this.api.get("/users");
   }
 
-  getUserById(id) {
-    return this.api.get("/users/" + id);
+  getUserById(userId) {
+    return this.api.get("/users/" + userId);
   }
 
   updateUserById(userId, reqBody) {

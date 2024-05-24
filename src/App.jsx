@@ -17,14 +17,7 @@ function App() {
     <div className="App">
       <Navbar />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <IsAnon>
-              <Homepage />
-            </IsAnon>
-          }
-        />
+        <Route path="/" element={<Homepage />} />
         <Route
           path="/signup"
           element={
@@ -34,7 +27,7 @@ function App() {
           }
         />
         <Route
-          path="/profile"
+          path="/profile/:userName"
           element={
             <IsPrivate>
               <Profile />
@@ -50,7 +43,7 @@ function App() {
           }
         />
         <Route
-          path="/users/:userId"
+          path="/users/:userName"
           element={
             <IsPrivate>
               <UserPage />

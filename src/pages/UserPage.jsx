@@ -1,46 +1,46 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { AuthContext } from "../context/auth.context";
 import UserServices from "../context/UserServices";
+import { AuthContext } from "../context/auth.context";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import CommunityCard from "../components/CommunityCard";
 
 const API_URL = "http://localhost:5005";
 
 function UserPage() {
-  const { userId } = useParams();
-  const [userData, setUserData] = useState(null);
-  const { isLoggedIn, setIsLoggedIn, user, setUser } = useContext(AuthContext);
-  const [isLoading, setIsLoading] = useState(true);
+  const { user, storeToken, authenticateUser, setUser, isLoggedIn } =
+    useContext(AuthContext);
 
-  console.log("UserPage component rendering");
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [errorMessage, setErrorMessage] = useState(undefined);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("Fetching user data for user ID:", userId);
-    UserServices.getUserById(userId)
-      .then((resp) => {
-        console.log("User data fetched:", resp.data);
-        setUserData(resp.data);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error("Failed to fetch data:", error);
-        setIsLoading(false);
-      });
-  }, [userId]);
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (!userData) {
-    return <div>No user data available.</div>;
-  }
+    if (isLoggedIn && user) {
+      setEmail(user.email);
+      setName(user.name);
+      setUserName(user.userName);
+    } else {
+      navigate("/login");
+    }
+  }, [isLoggedIn, user, navigate]);
 
   return (
     <div>
-      <h1>USER PAGE</h1>
-      <h1>{userData.name}</h1>
-      <p>Email: {userData.email}</p>
-      {/* Add more user details as needed */}
+      <h1>{user.name}</h1>
+      <Link to="../profile/:userName">
+        <button>Edit Profile</button>
+      </Link>
+      <h1>Communities</h1>
+      <Link to="../CommunityCreate">create</Link>
+      {/* <CommunityCard /> */}
+      <h1>Events</h1>
+      <Link to="../EventCreate">create</Link>
+      <h1>Tasks</h1>
     </div>
   );
 }
