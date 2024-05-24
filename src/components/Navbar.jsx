@@ -22,7 +22,7 @@ function Navbar() {
       {/*    UPDATE     */}
       {isLoggedIn && (
         <>
-          <Link to={`/userpage/${user.userName}`}>
+          <Link to={`/users/${user.userName}`}>
             {" "}
             <button>{user.name}'s Home</button>
           </Link>
