@@ -3,12 +3,10 @@ import { useEffect, useState } from "react";
 import TaskServices from "../context/TaskServices";
 import { Link } from "react-router-dom";
 
-export default function CommunityCard({ task }) {
+export default function CheckItemCard({ checkitem }) {
   return (
-    <Link to={`/tasks/${task.id}`}>
-      <div>
-        <h2>Task Card</h2>
-      </div>
-    </Link>
+    <div>
+      <h2>CheckItem Card</h2>
+    </div>
   );
 }
