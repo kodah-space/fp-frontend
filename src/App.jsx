@@ -11,49 +11,52 @@ import Profile from "./pages/Profile";
 import Imprint from "./pages/Imprint";
 import UserPage from "./pages/UserPage";
 import Homepage from "./pages/Homepage";
+import { ColorSchemeProvider } from "./context/ColorSchemeServices";
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route
-          path="/signup"
-          element={
-            <IsAnon>
-              <SignupPage />
-            </IsAnon>
-          }
-        />
-        <Route
-          path="/users/:userName/profile"
-          element={
-            <IsPrivate>
-              <Profile />
-            </IsPrivate>
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <IsAnon>
-              <LoginPage />
-            </IsAnon>
-          }
-        />
-        <Route
-          path="/users/:userName"
-          element={
-            <IsPrivate>
-              <UserPage />
-            </IsPrivate>
-          }
-        />
-        <Route path="/imprint" element={<Imprint />} />
-      </Routes>
-      <Footer />
-    </div>
+    <ColorSchemeProvider>
+      <div className="App">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route
+            path="/signup"
+            element={
+              <IsAnon>
+                <SignupPage />
+              </IsAnon>
+            }
+          />
+          <Route
+            path="/users/:userName/profile"
+            element={
+              <IsPrivate>
+                <Profile />
+              </IsPrivate>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <IsAnon>
+                <LoginPage />
+              </IsAnon>
+            }
+          />
+          <Route
+            path="/users/:userName"
+            element={
+              <IsPrivate>
+                <UserPage />
+              </IsPrivate>
+            }
+          />
+          <Route path="/imprint" element={<Imprint />} />
+        </Routes>
+        <Footer />
+      </div>
+    </ColorSchemeProvider>
   );
 }
 
