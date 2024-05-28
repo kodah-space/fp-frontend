@@ -6,6 +6,7 @@ import { useColorScheme } from "../context/ColorSchemeServices";
 
 function Navbar() {
   const { currentScheme } = useColorScheme();
+  const navbarScheme = currentScheme?.navbar;
   // Subscribe to the AuthContext to gain access to
   // the values from AuthContext.Provider `value` prop
   const {
@@ -18,7 +19,7 @@ function Navbar() {
   //  depending on whether the user is logged in or not
   return (
     <nav
-      className={`${currentScheme.navbar.background} ${currentScheme.navbar.text} flex items-center justify-between`}
+      className={`${navbarScheme.background} ${navbarScheme.text} flex items-center justify-between`}
     >
       <div className="max-w-screen-xl md:px-5 flex mx-auto padding-bottom-0 justify-start">
         <Link to="/" className="flex space-x-3 rtl:space-x-reverse">
