@@ -27,7 +27,7 @@ function App() {
           }
         />
         <Route
-          path="/profile/:userName"
+          path="/users/:userName/profile"
           element={
             <IsPrivate>
               <Profile />

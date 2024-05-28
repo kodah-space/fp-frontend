@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const API_URL = "http://localhost:5005";
 
 function ProfilePage() {
-  const { user, storeToken, authenticateUser, setUser, isLoggedIn } =
+  const { user, storeToken, authenticateUser, isLoggedIn } =
     useContext(AuthContext);
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
@@ -69,6 +69,9 @@ function ProfilePage() {
         // storeToken(response.data.authToken); // If a new token is provided
         // console.log(response.data.authToken);
         authenticateUser(); // Refresh the user data
+        setEmail(response.data.user.email);
+        setName(response.data.user.name);
+        setUserName(response.data.user.userName);
         // console.log(response.data.user);
         // setUser(response.data.user);
       })
