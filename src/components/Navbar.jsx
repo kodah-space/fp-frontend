@@ -29,14 +29,14 @@ function Navbar() {
         </>
       )}
 
-      {isLoggedIn && (
-        <>
-          <Link to="/profile">
-            <button>Profile</button>
-          </Link>
-          <button onClick={logOutUser}>Logout</button>
-        </>
-      )}
+      {/* {isLoggedIn && (
+        // <>
+        //   <Link to={`users/profile/${user.userName}`}>
+        //     <button>Profile</button>
+        //   </Link>
+        //   <button onClick={logOutUser}>Logout</button>
+        // </>
+      )} */}
 
       {!isLoggedIn && (
         <>

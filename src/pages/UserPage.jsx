@@ -32,14 +32,14 @@ function UserPage() {
   return (
     <div>
       <h1>{user.name}</h1>
-      <Link to="../profile/:userName">
+      <Link to="./profile">
         <button>Edit Profile</button>
       </Link>
       <h1>Communities</h1>
-      <Link to="../CommunityCreate">create</Link>
+      <Link to="./CommunityCreate">create</Link>
       {/* <CommunityCard /> */}
       <h1>Events</h1>
-      <Link to="../EventCreate">create</Link>
+      <Link to="./EventCreate">create</Link>
       <h1>Tasks</h1>
     </div>
   );
