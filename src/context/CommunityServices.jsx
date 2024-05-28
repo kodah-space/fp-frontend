@@ -17,8 +17,12 @@ class CommunityServicesClass {
     return this.api.get("/community/" + id);
   }
 
-  getCommunityByUserId(userId) {
-    return this.api.get("/communities?userId=" + userId);
+  getCommunityByUserId(creatorId) {
+    return this.api.get("api/communities/createdby/" + creatorId);
+  }
+
+  getCommunitiesUserIsMemberOf(userId) {
+    return this.api.get("api/communities/joinedby/" + userId);
   }
 
   updateCommunityById(eventId, reqBody) {
