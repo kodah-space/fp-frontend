@@ -1,11 +1,13 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
+import { useColorScheme } from "../context/ColorSchemeServices";
 
 const API_URL = "http://localhost:5005";
 
 function CommunityCreate() {
+  const { currentScheme, setScheme } = useColorScheme();
   const { user, storeToken, authenticateUser, isLoggedIn } =
     useContext(AuthContext);
 
@@ -41,8 +43,14 @@ function CommunityCreate() {
       });
   };
 
+  useEffect(() => {
+    setScheme("communitypage");
+  }, [setScheme]);
+
   return (
-    <div>
+    <div
+      className={`${currentScheme.background} ${currentScheme.text} min-h-screen flex flex-col`}
+    >
       <h2>Create a Community</h2>
       <form onSubmit={handleSubmit}>
         <div>

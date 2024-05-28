@@ -7,7 +7,12 @@ import { useEffect } from "react";
 const API_URL = "http://localhost:5005";
 
 function Homepage() {
-  const { currentScheme } = useColorScheme();
+  const { currentScheme, setScheme } = useColorScheme();
+
+  useEffect(() => {
+    console.log("Setting scheme to homepage");
+    setScheme("homepage");
+  }, [setScheme]);
 
   return (
     <div
