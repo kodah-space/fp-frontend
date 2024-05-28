@@ -7,7 +7,7 @@ export const ColorSchemeProvider = ({ children }) => {
   const [currentScheme, setCurrentScheme] = useState(colorSchemes.homepage);
 
   const setScheme = (pageType) => {
-    setCurrentScheme(colorSchemes[pageType]);
+    setCurrentScheme(colorSchemes[pageType] || colorSchemes.homepage);
   };
 
   return (

@@ -6,13 +6,16 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import CommunityCard from "../components/CommunityCard";
 import CommunityServices from "../context/CommunityServices";
+import { useColorScheme } from "../context/ColorSchemeServices";
 
 const API_URL = "http://localhost:5005";
 
 function UserPage() {
+  const { currentScheme, setScheme } = useColorScheme();
   const { user, storeToken, authenticateUser, setUser, isLoggedIn } =
     useContext(AuthContext);
   console.log(user._id);
+  const navigate = useNavigate();
 
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
@@ -21,10 +24,15 @@ function UserPage() {
   const [userCreatedCommunities, setUserCreatedCommunities] = useState([]);
   const [userJoinedCommunities, setUserJoinedCommunities] = useState([]);
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    console.log("Setting scheme to userpage");
+    setScheme("userpage");
+  }, [setScheme]);
 
   useEffect(() => {
+    console.log("User effect running");
     if (isLoggedIn && user) {
+      console.log("User is logged in:", user);
       setEmail(user.email);
       setName(user.name);
       setUserName(user.userName);
@@ -34,6 +42,7 @@ function UserPage() {
   }, [isLoggedIn, user, navigate]);
 
   useEffect(() => {
+    console.log("Fetching communities created by user:", user._id);
     CommunityServices.getCommunityByUserId(user._id)
       .then((resp) => {
         console.log(resp.data);
@@ -43,16 +52,19 @@ function UserPage() {
   }, [user._id]);
 
   useEffect(() => {
+    console.log("Fetching communities user is a member of:", user._id);
     CommunityServices.getCommunitiesUserIsMemberOf(user._id)
       .then((resp) => {
-        // console.log("member", resp.data);
+        console.log("Communities user is a member of:", resp.data);
         setUserJoinedCommunities(resp.data);
       })
       .catch((error) => console.error("Failed to fetch data:", error));
   }, [user._id]);
 
   return (
-    <div>
+    <div
+      className={`${currentScheme.background} ${currentScheme.text} min-h-screen flex flex-col`}
+    >
       <h1>{user.name}</h1>
       <Link to="./profile">
         <button>Edit Profile</button>

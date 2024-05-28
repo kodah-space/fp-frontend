@@ -10,12 +10,3 @@
   text-align: center;
   padding: 0 0 50px 0;
 }
-
-.text-container-large p {
-  padding: 0 2rem;
-}
-
-.text-container-small p {
-  padding: 0 2rem;
-  font-size: x-small;
-}
