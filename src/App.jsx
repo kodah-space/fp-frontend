@@ -11,7 +11,9 @@ import Profile from "./pages/Profile";
 import Imprint from "./pages/Imprint";
 import UserPage from "./pages/UserPage";
 import Homepage from "./pages/Homepage";
+import CommunityCreate from "./pages/CommunityCreate";
 import { ColorSchemeProvider } from "./context/ColorSchemeServices";
+import CommunityPage from "./pages/CommunityPage";
 
 function App() {
   return (
@@ -49,6 +51,23 @@ function App() {
             element={
               <IsPrivate>
                 <UserPage />
+              </IsPrivate>
+            }
+          />
+          <Route
+            path="/users/:userName/CommunityCreate"
+            element={
+              <IsPrivate>
+                <CommunityCreate />
+              </IsPrivate>
+            }
+          />
+
+          <Route
+            path="/communities/:id"
+            element={
+              <IsPrivate>
+                <CommunityPage />
               </IsPrivate>
             }
           />
