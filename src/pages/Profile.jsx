@@ -12,6 +12,7 @@ function ProfilePage() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
+  console.log(user);
 
   const navigate = useNavigate();
 
@@ -86,6 +87,13 @@ function ProfilePage() {
       <h1>Profile</h1>
 
       <form onSubmit={handleProfileUpdate}>
+        {user.profilePic && (
+          <img
+            src={user.profilePic}
+            alt="Profile"
+            style={{ width: "100px", height: "100px", borderRadius: "50%" }}
+          />
+        )}
         <label>Name:</label>
         <input
           type="text"
