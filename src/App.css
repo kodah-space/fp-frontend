@@ -1,47 +1,45 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@font-face {
+  font-family: "Unbounded-ExtraLight";
+  src: local("Unbounded-ExtraLight"),
+    url(./assets/fonts/Unbounded-ExtraLight.ttf) format("truetype");
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+@font-face {
+  font-family: "Unbounded-Light";
+  src: local("Unbounded-Light"),
+    url(./assets/fonts/Unbounded-Light.ttf) format("truetype");
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@font-face {
+  font-family: "Unbounded-Medium";
+  src: local("Unbounded-Medium"),
+    url(./assets/fonts/Unbounded-Medium.ttf) format("truetype");
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+@font-face {
+  font-family: "Unbounded-Regular";
+  src: local("Unbounded-Regular"),
+    url(./assets/fonts/Unbounded-Regular.ttf) format("truetype");
 }
 
-.card {
-  padding: 2em;
+@font-face {
+  font-family: "Unbounded-Bold";
+  src: local("Unbounded-Bold"),
+    url(./assets/fonts/Unbounded-Bold.ttf) format("truetype");
 }
 
-.read-the-docs {
-  color: #888;
+@font-face {
+  font-family: "Unbounded-Black";
+  src: local("Unbounded-Black"),
+    url(./assets/fonts/Unbounded-Black.ttf) format("truetype");
 }
 
-/* Everything above vite   */
+@font-face {
+  font-family: "Linux-Libertine";
+  src: local("Linux-Libertine"),
+    url(./assets/fonts/LinLibertine_R.ttf) format("truetype");
+}
+
 .hexagon-container {
   width: 200px;
   height: 115.47px; /* Calculate the height based on the width to create the hexagon shape */

@@ -28,8 +28,6 @@ class UserServicesClass {
   deleteUserById(id) {
     return this.api.delete("/users/" + id);
   }
-
-  // need to add functions that get, put communitiies and events??
 }
 
 const UserServices = new UserServicesClass();
