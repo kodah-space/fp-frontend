@@ -49,15 +49,21 @@ function LoginPage(props) {
 
   return (
     <div
-      className={`${currentScheme.background} ${currentScheme.text} min-h-screen flex flex-col`}
+      className={`${currentScheme.background} ${currentScheme.text} text-left min-h-screen flex flex-col  items-center`}
     >
-      <h1>Login</h1>
+      <div className="w-full text-left px-4">
+        <h2>Login</h2>
+      </div>
+
+      <br />
 
       <form onSubmit={handleLoginSubmit}>
         <label>Email:</label>
+        <br />
         <input type="email" name="email" value={email} onChange={handleEmail} />
         <br />
         <label>Password:</label>
+        <br />
         <input
           type="password"
           name="password"
@@ -65,12 +71,17 @@ function LoginPage(props) {
           onChange={handlePassword}
         />
         <br />
-        <button type="submit">Login</button>
+        <br />
+        <div className="text-center">
+          <button type="submit">▷ Login</button>
+        </div>
       </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-
+      <br />
       <p>Don't have an account yet?</p>
-      <Link to={"/signup"}> Sign Up</Link>
+      <div className="text-center">
+        <Link to={"/signup"}>▷ Sign Up</Link>
+      </div>
     </div>
   );
 }

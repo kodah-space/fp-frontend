@@ -97,7 +97,7 @@ function UserPage() {
       <Link to="./CommunityCreate" className="create-btn">
         ▷ create
       </Link>
-      <div className="flex flex-row">
+      <div className="flex flex-row flex-wrap justify-items-center">
         {userCreatedCommunities.map((community) => (
           <div key={community._id}>
             <CommunityCard key={community._id} community={community} />
