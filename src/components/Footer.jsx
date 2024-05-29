@@ -9,7 +9,7 @@ export default function Footer() {
     <footer
       className={`${currentScheme.footer.background} ${currentScheme.footer.text} fixed bottom-0 w-full`}
     >
-      <div className="text-sm">
+      <div className="text-xs">
         <span>© 2024 </span>
         <span className="px-2"> • </span>
         <Link to="/Imprint">

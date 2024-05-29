@@ -1,11 +1,13 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
+import { useColorScheme } from "../context/ColorSchemeServices";
 
 const API_URL = "http://localhost:5005";
 
 function LoginPage(props) {
+  const { currentScheme, setScheme } = useColorScheme();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
@@ -23,23 +25,32 @@ function LoginPage(props) {
     axios
       .post(`${API_URL}/auth/login`, requestBody)
       .then((response) => {
-        // Request to the server's endpoint `/auth/login` returns a response
-        // with the JWT string ->  response.data.authToken
+        // Store the JWT token
         console.log("JWT token", response.data.authToken);
         storeToken(response.data.authToken);
 
+        // Authenticate the user
         authenticateUser();
 
-        navigate("/"); // <== ADD
+        // Navigate to the user-specific page
+
+        navigate(`/users/${response.data.user.userName}`);
       })
       .catch((error) => {
-        const errorDescription = error.response.data.message;
-        setErrorMessage(errorDescription);
+        console.log("errorLogin", error);
+        // const errorDescription = error.response.data.message;
+        // setErrorMessage(errorDescription);
       });
   };
 
+  useEffect(() => {
+    setScheme("authpage");
+  }, [setScheme]);
+
   return (
-    <div className="LoginPage">
+    <div
+      className={`${currentScheme.background} ${currentScheme.text} min-h-screen flex flex-col`}
+    >
       <h1>Login</h1>
 
       <form onSubmit={handleLoginSubmit}>
