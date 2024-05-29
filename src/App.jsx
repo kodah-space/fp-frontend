@@ -64,7 +64,7 @@ function App() {
           />
 
           <Route
-            path="/communities/:id"
+            path="/communities/:communityId"
             element={
               <IsPrivate>
                 <CommunityPage />

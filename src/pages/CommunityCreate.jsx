@@ -35,7 +35,7 @@ function CommunityCreate() {
     axios
       .post(`${API_URL}/api/communities/`, requestBody)
       .then((response) => {
-        navigate("/communities/{response.data._id}");
+        navigate(`/communities/${response.data._id}`);
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;

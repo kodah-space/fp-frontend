@@ -10,11 +10,11 @@ class CommunityServicesClass {
     });
   }
   getAllCommunities() {
-    return this.api.get("/communities");
+    return this.api.get("api/communities");
   }
 
   getCommunitytById(id) {
-    return this.api.get("/community/" + id);
+    return this.api.get("/api/communities/" + id);
   }
 
   getCommunityByUserId(creatorId) {
@@ -26,7 +26,7 @@ class CommunityServicesClass {
   }
 
   updateCommunityById(eventId, reqBody) {
-    return this.api.put("/communities/" + eventId, reqBody);
+    return this.api.put("/api/communities/" + eventId, reqBody);
   }
 
   createNewCommunity(reqBody) {

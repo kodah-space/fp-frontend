@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import CommunityServices from "../context/CommunityServices";
 import { useColorScheme } from "../context/ColorSchemeServices";
+import { useNavigate } from "react-router-dom";
 
 function EventCreate() {
   const { currentScheme, setScheme } = useColorScheme();
