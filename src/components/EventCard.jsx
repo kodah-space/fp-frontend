@@ -6,10 +6,10 @@ import { Link } from "react-router-dom";
 export default function EventCard({ event }) {
   return (
     <div className="p-2">
-      <Link to={`/communities/${event.id}`}>
+      <Link to={`/events/${event._id}`}>
         <div className="relative border border-solid w-36 h-36 overflow-hidden">
           <img
-            src={event.imageUrl}
+            src={event.eventImage}
             className="absolute inset-0 w-full h-full object-cover"
           />
           <div className="absolute inset-0 flex items-center justify-center">

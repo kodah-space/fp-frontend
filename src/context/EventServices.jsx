@@ -16,8 +16,12 @@ class EventServicesClass {
     return this.api.get("api/events/" + id);
   }
 
-  getEventByUserId(userId) {
-    return this.api.get("/events?userId=" + userId);
+  getEventCreatedByUserId(userId) {
+    return this.api.get("/api/events/createdby/" + userId);
+  }
+
+  getEventUserisAttending(userId) {
+    return this.api.get("/api/events/attendedby/" + userId);
   }
 
   updateEventById(eventId, reqBody) {

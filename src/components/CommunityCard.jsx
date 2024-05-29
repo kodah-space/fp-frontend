@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 export default function CommunityCard({ community }) {
   return (
     <div className="p-2">
-      <Link to={`/communities/${community.id}`}>
+      <Link to={`/communities/${community._id}`}>
         <div className="relative border border-solid w-36 h-36 rounded-full overflow-hidden">
           <img
             src={community.imageUrl}

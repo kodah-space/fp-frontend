@@ -6,7 +6,10 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import CommunityCard from "../components/CommunityCard";
 import CommunityServices from "../context/CommunityServices";
+import EventServices from "../context/EventServices";
 import { useColorScheme } from "../context/ColorSchemeServices";
+import EventCard from "../components/EventCard";
+import Imprint from "./Imprint";
 
 const API_URL = "http://localhost:5005";
 
@@ -23,6 +26,8 @@ function UserPage() {
   const [errorMessage, setErrorMessage] = useState(undefined);
   const [userCreatedCommunities, setUserCreatedCommunities] = useState([]);
   const [userJoinedCommunities, setUserJoinedCommunities] = useState([]);
+  const [userCreatedEvents, setUserCreatedEvents] = useState([]);
+  const [userJoinedEvents, setUserJoinedEvents] = useState([]);
 
   useEffect(() => {
     console.log("Setting scheme to userpage");
@@ -61,6 +66,26 @@ function UserPage() {
       .catch((error) => console.error("Failed to fetch data:", error));
   }, [user._id]);
 
+  useEffect(() => {
+    console.log("Fetching events created by user:", user._id);
+    EventServices.getEventCreatedByUserId(user._id)
+      .then((resp) => {
+        console.log("Events user created", resp.data);
+        setUserCreatedEvents(resp.data);
+      })
+      .catch((error) => console.error("Failed to fetch data:", error));
+  }, [user._id]);
+
+  useEffect(() => {
+    console.log("Fetching events attending by user:", user._id);
+    EventServices.getEventUserisAttending(user._id)
+      .then((resp) => {
+        console.log("Events user is a Attending", resp.data);
+        setUserJoinedEvents(resp.data);
+      })
+      .catch((error) => console.error("Failed to fetch data:", error));
+  }, [user._id]);
+
   return (
     <div
       className={`${currentScheme.background} ${currentScheme.text} min-h-screen flex flex-col`}
@@ -85,9 +110,23 @@ function UserPage() {
         ))}
       </div>
       {/* <CommunityCard /> */}
-      <h1>Events</h1>
-      <Link to={`/users/${user.userName}/createEvent`}>create</Link>
-      <h1>Tasks</h1>
+      <h2>Events</h2>
+      <Link to="./createEvent" className="create-btn">
+        ▷ create
+      </Link>
+      <div className="flex flex-row">
+        {userCreatedEvents.map((event) => (
+          <div key={event._id}>
+            <EventCard key={event._id} event={event} />
+          </div>
+        ))}
+        {userJoinedEvents.map((event) => (
+          <div key={event._id}>
+            <EventCard key={event._id} event={event} />
+          </div>
+        ))}
+      </div>
+      <h2>Events</h2>
     </div>
   );
 }
