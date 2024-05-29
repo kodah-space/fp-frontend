@@ -36,6 +36,7 @@ function CommunityCreate() {
       .post(`${API_URL}/api/communities/`, requestBody)
       .then((response) => {
         navigate(`/communities/${response.data._id}`);
+        console.log("done");
       })
       .catch((error) => {
         if (error.response) {

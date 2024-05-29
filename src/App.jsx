@@ -15,6 +15,7 @@ import CommunityCreate from "./pages/CommunityCreate";
 import { ColorSchemeProvider } from "./context/ColorSchemeServices";
 import CommunityPage from "./pages/CommunityPage";
 import EventCreate from "./pages/EventCreate";
+import EventPage from "./pages/EventPage";
 
 function App() {
   return (
@@ -45,6 +46,15 @@ function App() {
             element={
               <IsPrivate>
                 <EventCreate />
+              </IsPrivate>
+            }
+          />
+
+          <Route
+            path="/events/:eventId"
+            element={
+              <IsPrivate>
+                <EventPage />
               </IsPrivate>
             }
           />

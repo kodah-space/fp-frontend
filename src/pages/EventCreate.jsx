@@ -24,6 +24,8 @@ function EventCreate() {
   const [errorMessage, setErrorMessage] = useState(undefined);
   const [eventTypes, setEventTypes] = useState([]);
 
+  const navigate = useNavigate();
+
   const handleName = (e) => setName(e.target.value);
   const handleDescription = (e) => setDescription(e.target.value);
   const handleEventImage = (e) => setEventImage(e.target.value);
@@ -80,17 +82,20 @@ function EventCreate() {
     };
 
     axios
-      .post(`${API_URL}/api/events`, requestBody)
+      .post(`${API_URL}/api/events/`, requestBody)
       .then((response) => {
-        navigate(`/communities/${response.data._id}`);
-        console.log(response);
+        navigate(`/events/${response.data._id}`);
+        console.log(response.data);
+        console.log("done");
       })
       .catch((error) => {
-        if (error.response && error.response.data) {
+        if (error.response) {
           const errorDescription = error.response.data.message;
           setErrorMessage(errorDescription);
+        } else if (error.request) {
+          setErrorMessage("Network error. Please try again.");
         } else {
-          setErrorMessage("An unexpected error occurred. Please try again.");
+          setErrorMessage("An unexpected error occurred.");
         }
       });
   };

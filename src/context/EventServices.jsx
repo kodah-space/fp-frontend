@@ -13,7 +13,7 @@ class EventServicesClass {
   }
 
   getEventById(id) {
-    return this.api.get("/events/" + id);
+    return this.api.get("api/events/" + id);
   }
 
   getEventByUserId(userId) {
