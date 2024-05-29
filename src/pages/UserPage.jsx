@@ -65,34 +65,33 @@ function UserPage() {
     <div
       className={`${currentScheme.background} ${currentScheme.text} min-h-screen flex flex-col`}
     >
-      <h1>{user.name}</h1>
-      <Link to="./profile">
-        <button>Edit Profile</button>
+      <Link to="./profile" className="text-end text-sm pr-4 pt-2">
+        <button>▷ Edit Profile</button>
       </Link>
-      <h1>Communities</h1>
-      <Link to="./CommunityCreate">create</Link>
-      <h2>created by </h2>
-      <div>
+      <h2>Communities</h2>
+      <Link to="./CommunityCreate" className="create-btn">
+        ▷ create
+      </Link>
+      <div className="flex flex-row">
         {userCreatedCommunities.map((community) => (
           <div key={community._id}>
-            <h2>{community.name}</h2>
-            <p>{community.description}</p>
+            <CommunityCard key={community._id} community={community} />
           </div>
         ))}
-        <br></br>
-        <h2>Member of </h2>
         {userJoinedCommunities.map((community) => (
           <div key={community._id}>
-            <h2>{community.name}</h2>
-            <p>{community.description}</p>
-            <br></br>
+            <CommunityCard key={community._id} community={community} />
           </div>
         ))}
       </div>
       {/* <CommunityCard /> */}
-      <h1>Events</h1>
-      <Link to="./EventCreate">create</Link>
-      <h1>Tasks</h1>
+      <h2>Events</h2>
+      <Link to="./EventCreate" className="create-btn">
+        ▷ create
+      </Link>
+      <h2>Tasks</h2>
+      <br></br>
+      <br></br>
     </div>
   );
 }
