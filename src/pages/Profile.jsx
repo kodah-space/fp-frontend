@@ -90,47 +90,55 @@ function ProfilePage() {
 
   return (
     <div
-      className={`${currentScheme.background} ${currentScheme.text} min-h-screen flex flex-col`}
+      className={`${currentScheme.background} ${currentScheme.text} profile-form text-left h-screen flex flex-col  items-center`}
     >
-      <h1>Profile</h1>
-
       <form onSubmit={handleProfileUpdate}>
-        {user.profilePic && (
-          <img
-            src={user.profilePic}
-            alt="Profile"
-            style={{ width: "100px", height: "100px", borderRadius: "50%" }}
-          />
-        )}
-        <label>Name:</label>
+        <div>
+          {user.profilePic && (
+            <img
+              src={user.profilePic}
+              alt="Profile"
+              style={{ width: "100px", height: "100px", borderRadius: "50%" }}
+              className="mx-auto my-6"
+            />
+          )}
+        </div>
+        <label className="label">Name:</label>
+        <br />
         <input
           type="text"
           name="name"
           value={name}
           onChange={handleNameChange}
+          className="px-2 mb-2"
         />
-
         <br />
-
-        <label>Email:</label>
+        <br />
+        <label className="label">Email:</label>
+        <br />
         <input
           type="email"
           name="email"
           value={email}
           onChange={handleEmailChange}
+          className="px-2 mb-2"
         />
         <br />
-
         <br />
-        <label>User Name:</label>
+        <label className="label">User Name:</label>
+        <br />
         <input
           type="text"
           name="name"
           value={userName}
           onChange={handleUserNameChange}
+          className="px-2 mb-2"
         />
         <br />
-        <button type="submit">Update</button>
+        <br />
+        <div className="text-center">
+          <button type="submit">▷ Update</button>
+        </div>
       </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
     </div>

@@ -95,15 +95,21 @@ function SignupPage(props) {
 
   return (
     <div
-      className={`${currentScheme.background} ${currentScheme.text} min-h-screen flex flex-col`}
+      className={`${currentScheme.background} ${currentScheme.text} text-left min-h-screen flex flex-col items-center`}
     >
-      <h1>Sign Up</h1>
+      <div className="w-full text-left px-4">
+        <h2>Sign Up</h2>
+      </div>
+      <br />
 
       <form onSubmit={handleSignupSubmit}>
         <label>Email:</label>
+        <br />
         <input type="email" name="email" value={email} onChange={handleEmail} />
         <br />
+        <br />
         <label>User Name:</label>
+        <br />
         <input
           type="text"
           name="name"
@@ -111,7 +117,9 @@ function SignupPage(props) {
           onChange={handleUserName}
         />
         <br />
+        <br />
         <label>Password:</label>
+        <br />
         <input
           type="password"
           name="password"
@@ -119,10 +127,14 @@ function SignupPage(props) {
           onChange={handlePassword}
         />
         <br />
+        <br />
         <label>Name:</label>
+        <br />
         <input type="text" name="name" value={name} onChange={handleName} />
         <br />
+        <br />
         <label>Date of Birth</label>
+        <br />
         <input
           type="date"
           name="dateOfBirth"
@@ -131,13 +143,18 @@ function SignupPage(props) {
           max={getTodayDate()}
         />
         <br />
-        <button type="submit">Sign Up</button>
+        <br />
+        <div className="text-center">
+          <button type="submit">▷ Sign Up</button>
+        </div>
       </form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-      <p>Already have account?</p>
-      <Link to={"/login"}> Login</Link>
+      <br />
+      <div className="text-center pb-24">
+        <p>Already have account?</p>
+        <Link to={"/login"}>▷ Login</Link>
+      </div>
     </div>
   );
 }
