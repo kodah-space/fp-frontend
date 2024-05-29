@@ -91,7 +91,7 @@ function UserPage() {
       </div>
       {/* <CommunityCard /> */}
       <h1>Events</h1>
-      <Link to="./EventCreate">create</Link>
+      <Link to={`/users/${user.userName}/createEvent`}>create</Link>
       <h1>Tasks</h1>
     </div>
   );
