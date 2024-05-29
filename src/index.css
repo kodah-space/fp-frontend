@@ -11,7 +11,13 @@
 
 @layer components {
   .create-btn {
-    @apply text-left text-sm px-4;
+    @apply text-left text-sm px-4 no-underline hover:underline;
+  }
+}
+
+@layer components {
+  .standard-btn {
+    @apply text-center no-underline hover:underline;
   }
 }
 
