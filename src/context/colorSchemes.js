@@ -47,6 +47,18 @@ const colorSchemes = {
       text: "text-[#5C5487]",
     },
   },
+  authpage: {
+    background: "bg-[#5C5487]",
+    text: "text-[#C8715A]",
+    navbar: {
+      background: "bg-[#F3C83C]",
+      text: "text-[#5C5487]",
+    },
+    footer: {
+      background: "bg-[#F3C83C]",
+      text: "text-[#5C5487]",
+    },
+  },
 };
 
 export default colorSchemes;

@@ -2,10 +2,12 @@ import { useContext, useState, useEffect } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import { useNavigate } from "react-router-dom";
+import { useColorScheme } from "../context/ColorSchemeServices";
 
 const API_URL = "http://localhost:5005";
 
 function ProfilePage() {
+  const { currentScheme, setScheme } = useColorScheme();
   const { user, storeToken, authenticateUser, isLoggedIn } =
     useContext(AuthContext);
   const [userName, setUserName] = useState("");
@@ -40,6 +42,10 @@ function ProfilePage() {
 
     return true;
   };
+
+  useEffect(() => {
+    setScheme("userpage");
+  }, [setScheme]);
 
   useEffect(() => {
     if (isLoggedIn && user) {
@@ -83,7 +89,9 @@ function ProfilePage() {
   };
 
   return (
-    <div className="ProfilePage">
+    <div
+      className={`${currentScheme.background} ${currentScheme.text} min-h-screen flex flex-col`}
+    >
       <h1>Profile</h1>
 
       <form onSubmit={handleProfileUpdate}>
