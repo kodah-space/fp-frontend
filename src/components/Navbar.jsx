@@ -19,53 +19,45 @@ function Navbar() {
   //  depending on whether the user is logged in or not
   return (
     <nav
-      className={`${navbarScheme.background} ${navbarScheme.text} flex items-center justify-between`}
+      className={`${navbarScheme.background} ${navbarScheme.text} flex justify-between items-center`}
     >
-      <div className="max-w-screen-xl md:px-5 flex mx-auto padding-bottom-0 justify-start">
+      <div className="flex items-center">
         <Link to="/" className="flex space-x-3 rtl:space-x-reverse">
-          <span className="text-2xl font-['Unbounded-Medium'] whitespace-nowrap px-2 py-1">
+          <span className="text-2xl font-['Unbounded-Medium'] whitespace-nowrap px-4 py-1">
             kandi
           </span>
         </Link>
       </div>
-      <div className="flex flex-wrap">
-        <div className="text-sm">
-          <div className="px-2 no-underline hover:underline">
-            {isLoggedIn && (
-              <>
-                <Link to={`/users/${user.userName}`}>△ {user.name}</Link>
-              </>
-            )}
-          </div>
-        </div>
-        <div>
-          <div>
-            <div className="text-sm px-2">
-              {isLoggedIn && (
-                <>
-                  <button
-                    className="no-underline hover:underline"
-                    onClick={logOutUser}
-                  >
-                    ▷ Logout
-                  </button>
-                </>
-              )}
+      <div className="flex items-center">
+        {isLoggedIn && (
+          <>
+            <div className="text-sm px-2 no-underline hover:underline">
+              <Link to={`/users/${user.userName}`}>△ {user.name}</Link>
             </div>
-            <div className="flex flex-wrap text-sm no-underline hover:underline">
-              {!isLoggedIn && (
-                <>
-                  <Link to="/signup" className="px-2">
-                    ▷ Sign Up
-                  </Link>
-                  <Link to="/login" className="px-2">
-                    ▷ Login
-                  </Link>
-                </>
-              )}
-            </div>
-          </div>
-        </div>
+            <button
+              className="text-sm pr-4 no-underline hover:underline"
+              onClick={logOutUser}
+            >
+              ▷ Logout
+            </button>
+          </>
+        )}
+        {!isLoggedIn && (
+          <>
+            <Link
+              to="/signup"
+              className="text-sm px-2 no-underline hover:underline"
+            >
+              ▷ Sign Up
+            </Link>
+            <Link
+              to="/login"
+              className="text-sm px-4 no-underline hover:underline"
+            >
+              ▷ Login
+            </Link>
+          </>
+        )}
       </div>
     </nav>
   );
