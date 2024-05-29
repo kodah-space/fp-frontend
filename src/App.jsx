@@ -16,6 +16,7 @@ import { ColorSchemeProvider } from "./context/ColorSchemeServices";
 import CommunityPage from "./pages/CommunityPage";
 import EventCreate from "./pages/EventCreate";
 import EventPage from "./pages/EventPage";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -92,6 +93,7 @@ function App() {
             }
           />
           <Route path="/imprint" element={<Imprint />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </div>

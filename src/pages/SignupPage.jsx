@@ -133,7 +133,7 @@ function SignupPage(props) {
         <input type="text" name="name" value={name} onChange={handleName} />
         <br />
         <br />
-        <label>Date of Birth</label>
+        <label>Date of Birth:</label>
         <br />
         <input
           type="date"
@@ -144,14 +144,14 @@ function SignupPage(props) {
         />
         <br />
         <br />
-        <div className="text-center">
+        <div className="standard-btn">
           <button type="submit">▷ Sign Up</button>
         </div>
       </form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
       <br />
-      <div className="text-center pb-24">
+      <div className="standard-btn pb-24">
         <p>Already have account?</p>
         <Link to={"/login"}>▷ Login</Link>
       </div>

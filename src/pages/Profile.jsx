@@ -136,7 +136,7 @@ function ProfilePage() {
         />
         <br />
         <br />
-        <div className="text-center">
+        <div className="standard-btn">
           <button type="submit">▷ Update</button>
         </div>
       </form>
