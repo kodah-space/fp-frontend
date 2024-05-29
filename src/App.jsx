@@ -14,6 +14,7 @@ import Homepage from "./pages/Homepage";
 import CommunityCreate from "./pages/CommunityCreate";
 import { ColorSchemeProvider } from "./context/ColorSchemeServices";
 import CommunityPage from "./pages/CommunityPage";
+import EventCreate from "./pages/EventCreate";
 
 function App() {
   return (
@@ -35,6 +36,15 @@ function App() {
             element={
               <IsPrivate>
                 <Profile />
+              </IsPrivate>
+            }
+          />
+
+          <Route
+            path="/users/:userName/createEvent"
+            element={
+              <IsPrivate>
+                <EventCreate />
               </IsPrivate>
             }
           />

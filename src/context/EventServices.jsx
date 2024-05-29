@@ -25,7 +25,7 @@ class EventServicesClass {
   }
 
   createNewEvent(reqBody) {
-    return this.api.post("/events", reqBody);
+    return this.api.post("/api/events", reqBody);
   }
 
   deleteEventById(id) {

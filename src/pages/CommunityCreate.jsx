@@ -38,8 +38,14 @@ function CommunityCreate() {
         navigate(`/communities/${response.data._id}`);
       })
       .catch((error) => {
-        const errorDescription = error.response.data.message;
-        setErrorMessage(errorDescription);
+        if (error.response) {
+          const errorDescription = error.response.data.message;
+          setErrorMessage(errorDescription);
+        } else if (error.request) {
+          setErrorMessage("Network error. Please try again.");
+        } else {
+          setErrorMessage("An unexpected error occurred.");
+        }
       });
   };
 
