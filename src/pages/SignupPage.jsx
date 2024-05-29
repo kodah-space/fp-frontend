@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useColorScheme } from "../context/ColorSchemeServices";
 
 const API_URL = "http://localhost:5005";
 
 function SignupPage(props) {
+  const { currentScheme, setScheme } = useColorScheme();
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -52,6 +54,10 @@ function SignupPage(props) {
       return false;
     }
 
+    useEffect(() => {
+      setScheme("authpage");
+    }, [setScheme]);
+
     return true;
   };
 
@@ -88,7 +94,9 @@ function SignupPage(props) {
   };
 
   return (
-    <div className="SignupPage">
+    <div
+      className={`${currentScheme.background} ${currentScheme.text} min-h-screen flex flex-col`}
+    >
       <h1>Sign Up</h1>
 
       <form onSubmit={handleSignupSubmit}>
