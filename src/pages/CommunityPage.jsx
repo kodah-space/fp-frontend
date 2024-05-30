@@ -4,6 +4,7 @@ import { useColorScheme } from "../context/ColorSchemeServices";
 import { AuthContext } from "../context/auth.context";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import EventCard from "../components/EventCard";
 
 function CommunityPage() {
   const { currentScheme, setScheme } = useColorScheme();
@@ -67,7 +68,19 @@ function CommunityPage() {
 
         <h2 className="text-2xl font-bold mb-2">Manifesto</h2>
         <p className="mb-4">{manifesto}</p>
+
         <div className="flex flex-col">
+          <h2 className="text-2xl font-bold mb-2">Events</h2>
+          <div className="list-disc list-inside mb-4 flex flex-wrap justify-center">
+            {events.map((event, index) => (
+              <div key={event._id}>
+                <EventCard key={event._id} event={event} />
+              </div>
+            ))}
+          </div>
+          {errorMessage && <p className="text-red-500 mt-4">{errorMessage}</p>}
+        </div>
+        <div className="flex flex-col pb-20">
           <h2 className="text-2xl font-bold mb-2">Members</h2>
           <ul className="list-disc list-inside mb-4 flex flex-wrap justify-center">
             {members.map((member, index) => (
@@ -76,17 +89,6 @@ function CommunityPage() {
               </li>
             ))}
           </ul>
-        </div>
-        <div className="flex flex-col">
-          <h2 className="text-2xl font-bold mb-2">Events</h2>
-          <ul className="list-disc list-inside mb-4 flex flex-wrap justify-center">
-            {events.map((event, index) => (
-              <li key={index}>
-                {event.name} - {new Date(event.beginTime).toLocaleDateString()}
-              </li>
-            ))}
-          </ul>
-          {errorMessage && <p className="text-red-500 mt-4">{errorMessage}</p>}
         </div>
       </div>
     </div>

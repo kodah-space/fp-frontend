@@ -93,7 +93,7 @@ function UserPage() {
       <Link to="./profile" className="text-end text-sm pr-4 pt-2">
         <button>▷ Edit Profile</button>
       </Link>
-      <h2>Communities</h2>
+      <h2 className="px-4">Communities</h2>
       <Link to="./CommunityCreate" className="create-btn">
         ▷ create
       </Link>
@@ -110,7 +110,7 @@ function UserPage() {
         ))}
       </div>
 
-      <h2>Events</h2>
+      <h2 className="px-4">Events</h2>
       <Link to="./createEvent" className="create-btn">
         ▷ create
       </Link>
@@ -126,7 +126,7 @@ function UserPage() {
           </div>
         ))}
       </div>
-      <h2>Tasks</h2>
+      <h2 className="px-4 pb-20">Tasks</h2>
     </div>
   );
 }
