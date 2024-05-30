@@ -39,7 +39,7 @@ function Homepage() {
 
       {isLoggedIn && (
         <h1 className="text-2xl font-bold underline py-5">
-          Hi {user.name}! Welcome to Kandi
+          Hi {user.name}! Welcome to kandi
         </h1>
       )}
 
