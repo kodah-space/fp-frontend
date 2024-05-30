@@ -17,9 +17,9 @@ export default function TaskCard({ task }) {
           <div className="px-1 text-sm text-center font-[Unbounded-Regular] tracking-wide overflow-hidden line-clamp-2">
             {task.taskName}
           </div>
-          <div className="px-1 text-sm text-center font-[Unbounded-Regular] tracking-wide overflow-hidden">
+          {/* <div className="px-1 text-sm text-center font-[Unbounded-Regular] tracking-wide overflow-hidden">
             {task.descriptionRequirements}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
