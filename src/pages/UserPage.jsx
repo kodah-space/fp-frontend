@@ -143,7 +143,7 @@ function UserPage() {
       <div className="flex flex-row flex-wrap justify-center">
         {userContributingTasks.map((task) => (
           <div key={task._id}>
-            <Link to={`/events/${task.eventID}`}>
+            <Link to={`/events/${task.eventId}`}>
               <TaskCard key={task._id} task={task} />
             </Link>
           </div>

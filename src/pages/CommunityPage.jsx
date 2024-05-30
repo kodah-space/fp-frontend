@@ -5,6 +5,7 @@ import { AuthContext } from "../context/auth.context";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import EventCard from "../components/EventCard";
+import { Link } from "react-router-dom";
 
 function CommunityPage() {
   const { currentScheme, setScheme } = useColorScheme();
@@ -22,6 +23,7 @@ function CommunityPage() {
   const [members, setMembers] = useState([]);
   const [events, setEvents] = useState([]);
   const [errorMessage, setErrorMessage] = useState(undefined);
+  const [isCreator, setIsCreator] = useState(undefined);
 
   useEffect(() => {
     setScheme("communitypage");
@@ -47,6 +49,14 @@ function CommunityPage() {
         setManifesto(resp.data.manifesto);
         setMembers(resp.data.members);
         setEvents(resp.data.events);
+
+        if (user._id === resp.data.creator._id) {
+          setIsCreator(true);
+          console.log("creator");
+        } else {
+          setIsCreator(false);
+          console.log("not creator");
+        }
       })
       .catch((error) => console.error("Failed to fetch data:", error));
   }, [user._id]);
@@ -66,11 +76,19 @@ function CommunityPage() {
         )}
         <p className="mb-4">{description}</p>
 
-        <h2 className="text-2xl font-bold mb-2">Manifesto</h2>
+        <h2 className="text-xl font-bold mb-2">Manifesto</h2>
         <p className="mb-4">{manifesto}</p>
 
         <div className="flex flex-col">
-          <h2 className="text-2xl font-bold mb-2">Events</h2>
+          <h2 className="text-xl font-bold">Events</h2>
+          {isCreator && (
+            <Link
+              to={`../users/${user.UserName}/createEvent`}
+              className="create-btn px-0 mb-2"
+            >
+              ▷ create
+            </Link>
+          )}
           <div className="list-disc list-inside mb-4 flex flex-wrap justify-center">
             {events.map((event, index) => (
               <div key={event._id}>
@@ -81,7 +99,7 @@ function CommunityPage() {
           {errorMessage && <p className="text-red-500 mt-4">{errorMessage}</p>}
         </div>
         <div className="flex flex-col pb-20">
-          <h2 className="text-2xl font-bold mb-2">Members</h2>
+          <h2 className="text-xl font-bold mb-2">Members</h2>
           <ul className="list-none list-inside mb-4 flex flex-wrap justify-center">
             {members.map((member, index) => (
               <li
