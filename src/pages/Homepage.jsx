@@ -18,9 +18,9 @@ function Homepage() {
     <div
       className={`${currentScheme.background} ${currentScheme.text} flex flex-col min-h-screen`}
     >
-      <span className="text-2xl font-bold underline py-5">
+      <h1 className="text-2xl font-bold underline py-5">
         Join kandi & make things happen
-      </span>
+      </h1>
       <p className="px-4">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
         eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam

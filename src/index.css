@@ -4,8 +4,14 @@
 @tailwind variants;
 
 @layer components {
+  h1 {
+    @apply underline px-4 pt-4 text-center;
+  }
+}
+
+@layer components {
   h2 {
-    @apply font-bold text-xl underline px-4 pt-4 text-left;
+    @apply text-xl underline pt-4 text-left;
   }
 }
 
@@ -29,8 +35,7 @@
   padding: 0 0 50px 0;
 }
 
-.profile-form textarea,
-input {
-  border: 1px solid;
-  background-color: inherit;
+.community-container p {
+  text-align: left;
+  padding: 5px;
 }
