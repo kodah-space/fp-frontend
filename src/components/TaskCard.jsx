@@ -1,20 +1,27 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import TaskServices from "../context/TaskServices";
-import { Link } from "react-router-dom";
-import { renderToStaticMarkup } from "react-dom/server";
+import { useColorScheme } from "../context/ColorSchemeServices";
 
-import React from "react";
+export default function TaskCard({ task }) {
+  const { currentScheme } = useColorScheme();
 
-const TaskCard = ({ task }) => {
   return (
-    <div className="relative inline-block">
-      <div className="hexagon"></div>
-      <div className="absolute inset-0 flex items-center justify-center p-4">
-        <h2 className="text-white text-lg">{task.title}</h2>
+    <div className="p-2">
+      <div
+        className="relative border-2 border-solid w-36 h-36 overflow-hidden flex items-center justify-center"
+        style={{
+          borderColor: "var(--border-color)",
+          clipPath: "polygon(50% 0%, 100% 100%, 0% 100%)",
+        }}
+      >
+        <div className="absolute inset-0 flex flex-col items-center justify-center z-20">
+          <div className="px-1 text-sm text-center font-[Unbounded-Regular] tracking-wide overflow-hidden line-clamp-2">
+            {task.title}
+          </div>
+          <div className="px-1 text-sm text-center font-[Unbounded-Regular] tracking-wide overflow-hidden">
+            {task.description}
+          </div>
+        </div>
       </div>
     </div>
   );
-};
-
-export default TaskCard;
+}

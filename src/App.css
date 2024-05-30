@@ -39,7 +39,3 @@
   src: local("Linux-Libertine"),
     url(./assets/fonts/LinLibertine_R.ttf) format("truetype");
 }
-
-h1 {
-  font-size: ;
-}
