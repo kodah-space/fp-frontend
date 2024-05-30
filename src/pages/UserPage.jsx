@@ -97,7 +97,7 @@ function UserPage() {
       <Link to="./CommunityCreate" className="create-btn">
         ▷ create
       </Link>
-      <div className="flex flex-row flex-wrap justify-items-center">
+      <div className="flex flex-row flex-wrap justify-center">
         {userCreatedCommunities.map((community) => (
           <div key={community._id}>
             <CommunityCard key={community._id} community={community} />
@@ -109,12 +109,12 @@ function UserPage() {
           </div>
         ))}
       </div>
-      {/* <CommunityCard /> */}
+
       <h2>Events</h2>
       <Link to="./createEvent" className="create-btn">
         ▷ create
       </Link>
-      <div className="flex flex-row">
+      <div className="flex flex-row flex-wrap justify-center">
         {userCreatedEvents.map((event) => (
           <div key={event._id}>
             <EventCard key={event._id} event={event} />
@@ -126,7 +126,7 @@ function UserPage() {
           </div>
         ))}
       </div>
-      <h2>Events</h2>
+      <h2>Tasks</h2>
     </div>
   );
 }

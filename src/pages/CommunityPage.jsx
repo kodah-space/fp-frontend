@@ -54,8 +54,8 @@ function CommunityPage() {
     <div
       className={`${currentScheme.background} ${currentScheme.text} min-h-screen flex flex-col`}
     >
-      <div className="container mx-auto p-4">
-        <h1 className="text-3xl font-bold mb-4">{name}</h1>
+      <div className="community-container mx-auto p-4">
+        <h1 className="text-2xl font-bold mb-4">{name}</h1>
         {communityImage && (
           <img
             src={communityImage}
@@ -64,23 +64,30 @@ function CommunityPage() {
           />
         )}
         <p className="mb-4">{description}</p>
+
         <h2 className="text-2xl font-bold mb-2">Manifesto</h2>
         <p className="mb-4">{manifesto}</p>
-        <h2 className="text-2xl font-bold mb-2">Members</h2>
-        <ul className="list-disc list-inside mb-4">
-          {members.map((member, index) => (
-            <li key={index}>{member.name}</li>
-          ))}
-        </ul>
-        <h2 className="text-2xl font-bold mb-2">Events</h2>
-        <ul className="list-disc list-inside mb-4">
-          {events.map((event, index) => (
-            <li key={index}>
-              {event.name} - {new Date(event.beginTime).toLocaleDateString()}
-            </li>
-          ))}
-        </ul>
-        {errorMessage && <p className="text-red-500 mt-4">{errorMessage}</p>}
+        <div className="flex flex-col">
+          <h2 className="text-2xl font-bold mb-2">Members</h2>
+          <ul className="list-disc list-inside mb-4 flex flex-wrap justify-center">
+            {members.map((member, index) => (
+              <li key={index} className="mr-4">
+                {member.name}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="flex flex-col">
+          <h2 className="text-2xl font-bold mb-2">Events</h2>
+          <ul className="list-disc list-inside mb-4 flex flex-wrap justify-center">
+            {events.map((event, index) => (
+              <li key={index}>
+                {event.name} - {new Date(event.beginTime).toLocaleDateString()}
+              </li>
+            ))}
+          </ul>
+          {errorMessage && <p className="text-red-500 mt-4">{errorMessage}</p>}
+        </div>
       </div>
     </div>
   );

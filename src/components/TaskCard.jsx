@@ -4,22 +4,17 @@ import TaskServices from "../context/TaskServices";
 import { Link } from "react-router-dom";
 import { renderToStaticMarkup } from "react-dom/server";
 
-export default function TaskCard({ task }) {
+import React from "react";
+
+const TaskCard = ({ task }) => {
   return (
-    <div className="p-2">
-      <Link to={`/communities/${task.id}`}>
-        <div className="relative border border-solid w-36 h-36 rounded-full overflow-hidden">
-          <img
-            src={task.imageUrl}
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-inherit text-center font-[Unbounded-Regular] tracking-wide text-wrap">
-              {task.name}
-            </span>
-          </div>
-        </div>
-      </Link>
+    <div className="relative inline-block">
+      <div className="hexagon"></div>
+      <div className="absolute inset-0 flex items-center justify-center p-4">
+        <h2 className="text-white text-lg">{task.title}</h2>
+      </div>
     </div>
   );
-}
+};
+
+export default TaskCard;
