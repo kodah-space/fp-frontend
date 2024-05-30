@@ -33,13 +33,13 @@ function AuthProviderWrapper(props) {
         })
         .then((response) => {
           // If the server verifies that the JWT token is valid
-          console.log("authUser", response);
           const user = response.data;
           // Update state variables
+
+          console.log(user);
           setIsLoggedIn(true);
           setIsLoading(false);
           setUser(user);
-          console.log(user);
         })
         .catch((error) => {
           // If the server sends an error response (invalid token)
@@ -61,7 +61,9 @@ function AuthProviderWrapper(props) {
     // Upon logout, remove the token from the localStorage
     localStorage.removeItem("authToken");
   };
-
+  const updateUser = (newUser) => {
+    setUser(newUser);
+  };
   const logOutUser = () => {
     // <== ADD
     // To log out the user, remove the token
@@ -85,6 +87,7 @@ function AuthProviderWrapper(props) {
         storeToken,
         authenticateUser,
         logOutUser,
+        updateUser,
       }}
     >
       {props.children}

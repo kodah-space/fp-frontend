@@ -8,13 +8,12 @@ const API_URL = "http://localhost:5005";
 
 function ProfilePage() {
   const { currentScheme, setScheme } = useColorScheme();
-  const { user, storeToken, authenticateUser, isLoggedIn } =
+  const { user, setUser, authenticateUser, isLoggedIn } =
     useContext(AuthContext);
-  const [userName, setUserName] = useState("");
+  const [userName, setUserName] = useState(user.userName || "");
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
-  console.log(user);
 
   const navigate = useNavigate();
 
@@ -72,17 +71,17 @@ function ProfilePage() {
         },
       })
       .then((response) => {
+        setUserName(response.data.user.userName);
         // Assuming the response contains the updated user details
         // storeToken(response.data.authToken); // If a new token is provided
         // console.log(response.data.authToken);
+        // setUser(response.data.user); // Update user state in context
         authenticateUser(); // Refresh the user data
-        setEmail(response.data.user.email);
-        setName(response.data.user.name);
-        setUserName(response.data.user.userName);
         // console.log(response.data.user);
         // setUser(response.data.user);
       })
       .catch((error) => {
+        console.log("err", error);
         const errorDescription = error.response.data.message;
         setErrorMessage(errorDescription);
       });
