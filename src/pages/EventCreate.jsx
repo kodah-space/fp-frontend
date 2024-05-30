@@ -107,111 +107,146 @@ function EventCreate() {
 
   return (
     <div
-      className={`${currentScheme.background} ${currentScheme.text} min-h-screen flex flex-col`}
+      className={`${currentScheme.background} ${currentScheme.text} text-left min-h-screen `}
     >
-      <h2>Create an Event</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Community:</label>
-          <select value={communityId} onChange={handleCommunityId} required>
-            <option value="">Select a community</option>
-            {communities.map((community) => (
-              <option key={community._id} value={community._id}>
-                {community.name}
-              </option>
-            ))}
-          </select>
-        </div>
+      <h2 className="px-5 pb-5">Create an Event</h2>
+      <div className="flex flex-col items-center">
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label>Community:</label>
+            <br />
+            <select
+              value={communityId}
+              onChange={handleCommunityId}
+              required
+              className="input-field"
+            >
+              <option value="">Select a community</option>
+              {communities.map((community) => (
+                <option key={community._id} value={community._id}>
+                  {community.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <br />
+          <div>
+            <label>Event Name:</label>
+            <br />
+            <input
+              type="text"
+              name="name"
+              value={name}
+              onChange={handleName}
+              required
+              className="input-field"
+            />
+          </div>
+          <br />
 
-        <div>
-          <label>Event Name:</label>
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={handleName}
-            required
-          />
-        </div>
+          <div>
+            <label>Description:</label>
+            <br />
+            <textarea
+              name="description"
+              value={description}
+              onChange={handleDescription}
+              required
+              className="input-field"
+            />
+          </div>
+          <br />
 
-        <div>
-          <label>Description:</label>
-          <textarea
-            name="description"
-            value={description}
-            onChange={handleDescription}
-            required
-          />
-        </div>
+          <div>
+            <label>Event Image URL:</label>
+            <br />
+            <input
+              type="text"
+              name="eventImage"
+              value={eventImage}
+              onChange={handleEventImage}
+              className="input-field"
+            />
+          </div>
+          <br />
 
-        <div>
-          <label>Event Image URL:</label>
-          <input
-            type="text"
-            name="eventImage"
-            value={eventImage}
-            onChange={handleEventImage}
-          />
-        </div>
+          <div>
+            <label>Location:</label>
+            <br />
+            <input
+              type="text"
+              name="location"
+              value={location}
+              onChange={handleLocation}
+              required
+              className="input-field"
+            />
+          </div>
+          <br />
 
-        <div>
-          <label>Location:</label>
-          <input
-            type="text"
-            name="location"
-            value={location}
-            onChange={handleLocation}
-            required
-          />
-        </div>
+          <div>
+            <label>Begin Time:</label>
+            <br />
+            <input
+              type="datetime-local"
+              name="beginTime"
+              value={beginTime}
+              onChange={handleBeginTime}
+              required
+              className="input-field"
+            />
+          </div>
+          <br />
+          <div>
+            <label>End Time:</label>
+            <br />
+            <input
+              type="datetime-local"
+              name="endTime"
+              value={endTime}
+              onChange={handleEndTime}
+              required
+              className="input-field"
+            />
+          </div>
+          <br />
+          <div>
+            <label>Type of Event:</label>
+            <br />
+            <select
+              value={typeOfEvent}
+              onChange={handleTypeOfEvent}
+              required
+              className="input-field"
+            >
+              <option value="">Select the event type</option>
+              {eventTypes.map((event, key) => (
+                <option key={key} value={event.id}>
+                  {event}
+                </option>
+              ))}
+            </select>
+          </div>
+          <br />
 
-        <div>
-          <label>Begin Time:</label>
-          <input
-            type="datetime-local"
-            name="beginTime"
-            value={beginTime}
-            onChange={handleBeginTime}
-            required
-          />
-        </div>
-
-        <div>
-          <label>End Time:</label>
-          <input
-            type="datetime-local"
-            name="endTime"
-            value={endTime}
-            onChange={handleEndTime}
-            required
-          />
-        </div>
-
-        <div>
-          <label>Type of Event:</label>
-          <select value={typeOfEvent} onChange={handleTypeOfEvent} required>
-            <option value="">Select the event type</option>
-            {eventTypes.map((event, key) => (
-              <option key={key} value={event.id}>
-                {event}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div>
-          <label>Code of Conduct:</label>
-          <textarea
-            name="codeOfConduct"
-            value={codeOfConduct}
-            onChange={handleCodeOfConduct}
-          />
-        </div>
-
-        {errorMessage && <p className="error">{errorMessage}</p>}
-
-        <button type="submit">Create Event</button>
-      </form>
+          <div>
+            <label>Code of Conduct:</label>
+            <br />
+            <textarea
+              name="codeOfConduct"
+              value={codeOfConduct}
+              onChange={handleCodeOfConduct}
+              className="input-field"
+            />
+          </div>
+          <br />
+          {errorMessage && <p className="error">{errorMessage}</p>}
+          <div className="standard-btn">
+            <button type="submit">▷ Create Event</button>
+          </div>
+          <br />
+        </form>
+      </div>
     </div>
   );
 }

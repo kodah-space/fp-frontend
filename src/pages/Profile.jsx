@@ -120,7 +120,7 @@ function ProfilePage() {
           name="name"
           value={name}
           onChange={handleNameChange}
-          className="px-2 mb-2"
+          className="input-field"
         />
         <br />
         <br />
@@ -131,7 +131,7 @@ function ProfilePage() {
           name="email"
           value={email}
           onChange={handleEmailChange}
-          className="px-2 mb-2"
+          className="input-field"
         />
         <br />
         <br />
@@ -142,7 +142,7 @@ function ProfilePage() {
           name="name"
           value={userName}
           onChange={handleUserNameChange}
-          className="px-2 mb-2"
+          className="input-field"
         />
         <br />
         <br />

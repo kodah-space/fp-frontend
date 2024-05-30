@@ -63,39 +63,49 @@ function CommunityCreate() {
 
   return (
     <div
-      className={`${currentScheme.background} ${currentScheme.text} min-h-screen flex flex-col`}
+      className={`${currentScheme.background} ${currentScheme.text} text-left min-h-screen `}
     >
-      <h2>Create a Community</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Community Name:</label>
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={handleName}
-            required
-          />
-        </div>
-
-        <div>
-          <label>Description:</label>
-          <textarea
-            name="description"
-            value={description}
-            onChange={handleDescription}
-          />
-        </div>
-        <div>
-          <label>Manifesto:</label>
-          <textarea
-            name="manifesto"
-            value={manifesto}
-            onChange={handleManifesto}
-          />
-        </div>
-        <button type="submit">Create Community</button>
-      </form>
+      <h2 className="px-5 pb-5">Create New Community</h2>
+      <div className="flex flex-col items-center">
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label>Community Name:</label>
+            <br />
+            <input
+              type="text"
+              name="name"
+              value={name}
+              onChange={handleName}
+              required
+              className="input-field"
+            />
+          </div>
+          <br />
+          <div>
+            <label>Description:</label> <br />
+            <textarea
+              name="description"
+              value={description}
+              onChange={handleDescription}
+              className="input-field"
+            />
+          </div>
+          <br />
+          <div>
+            <label>Manifesto:</label> <br />
+            <textarea
+              name="manifesto"
+              value={manifesto}
+              onChange={handleManifesto}
+              className="input-field"
+            />
+          </div>
+          <br />
+          <div className="standard-btn text-center">
+            <button type="submit">▷ Create Community</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
