@@ -11,6 +11,7 @@ import { useColorScheme } from "../context/ColorSchemeServices";
 import EventCard from "../components/EventCard";
 import Imprint from "./Imprint";
 import TaskServices from "../context/TaskServices";
+import TaskCard from "../components/TaskCard";
 
 const API_URL = "http://localhost:5005";
 
@@ -29,6 +30,7 @@ function UserPage() {
   const [userJoinedCommunities, setUserJoinedCommunities] = useState([]);
   const [userCreatedEvents, setUserCreatedEvents] = useState([]);
   const [userJoinedEvents, setUserJoinedEvents] = useState([]);
+  const [userContributingTasks, setUserContributingTasks] = useState([]);
 
   useEffect(() => {
     console.log("Setting scheme to userpage");
@@ -92,7 +94,7 @@ function UserPage() {
     TaskServices.getTaskContributedByUserId(user._id)
       .then((resp) => {
         console.log("tasks user is a contributing", resp.data);
-        setUserJoinedEvents(resp.data);
+        setUserContributingTasks(resp.data);
       })
       .catch((error) => console.error("Failed to fetch data:", error));
   }, [user._id]);
@@ -138,6 +140,14 @@ function UserPage() {
         ))}
       </div>
       <h2 className="px-4 pb-20">Tasks</h2>
+
+      <div className="flex flex-row flex-wrap justify-center">
+        {userContributingTasks.map((task) => (
+          <div key={task._id}>
+            <TaskCard key={task._id} task={task} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

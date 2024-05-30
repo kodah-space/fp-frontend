@@ -31,7 +31,7 @@ class TaskServicesClass {
   }
 
   getTaskContributedByUserId(userId) {
-    return this.api.get("/tasks/contibutionby/" + userId);
+    return this.api.get("/api/tasks/contibutionby/" + userId);
   }
 }
 
