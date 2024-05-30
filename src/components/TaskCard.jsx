@@ -16,7 +16,6 @@ export default function TaskCard({ task }) {
           <div className="px-1 text-sm text-center font-[Unbounded-Regular] tracking-wide overflow-hidden line-clamp-2">
             {task.taskName}
           </div>
-<<<<<<< HEAD
         </div>
         <div
           className="absolute inset-x-0 top-1/2 w-full h-0 border-b-2 z-15"
@@ -24,11 +23,8 @@ export default function TaskCard({ task }) {
         ></div>
         <div className="absolute inset-x-0 bottom-0 w-full h-1/2 flex items-center justify-center z-20">
           <div className="px-1 text-xs text-left font-[Unbounded-Regular] tracking-wide overflow-hidden line-clamp-3">
-=======
-          {/* <div className="px-1 text-sm text-center font-[Unbounded-Regular] tracking-wide overflow-hidden">
->>>>>>> 21c796955aca87a02735ac82777b200c51f2cd6d
             {task.descriptionRequirements}
-          </div> */}
+          </div>
         </div>
       </div>
     </div>
