@@ -24,7 +24,10 @@ function CommunityCreate() {
   const [creator, setCreator] = useState(user._id);
   const [errorMessage, setErrorMessage] = useState(undefined);
 
+  const token = localStorage.getItem("authToken");
+
   const navigate = useNavigate();
+
   const handleName = (e) => setName(e.target.value);
   const handleDescription = (e) => setDescription(e.target.value);
   const handleManifesto = (e) => setManifesto(e.target.value);
@@ -33,7 +36,11 @@ function CommunityCreate() {
     e.preventDefault();
     const requestBody = { name, description, creator, manifesto };
     axios
-      .post(`${API_URL}/api/communities/`, requestBody)
+      .post(`${API_URL}/api/communities/`, requestBody, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((response) => {
         navigate(`/communities/${response.data._id}`);
         console.log("done");

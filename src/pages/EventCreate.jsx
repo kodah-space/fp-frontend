@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";
 import EventServices from "../context/EventServices";
+const token = localStorage.getItem("authToken");
 
 const API_URL = "http://localhost:5005";
 
@@ -82,7 +83,11 @@ function EventCreate() {
     };
 
     axios
-      .post(`${API_URL}/api/events/`, requestBody)
+      .post(`${API_URL}/api/events/`, requestBody, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((response) => {
         navigate(`/events/${response.data._id}`);
         console.log(response.data);
