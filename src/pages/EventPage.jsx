@@ -4,6 +4,7 @@ import { useColorScheme } from "../context/ColorSchemeServices";
 import { AuthContext } from "../context/auth.context";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import TaskCard from "../components/TaskCard";
 
 function EventPage() {
   const { currentScheme, setScheme } = useColorScheme();
@@ -68,44 +69,44 @@ function EventPage() {
       className={`${currentScheme.background} ${currentScheme.text} min-h-screen flex flex-col`}
     >
       <h1 className="text-3xl font-bold my-4">{name}</h1>
+      <p className="pb-5">{typeOfEvent}</p>
       {eventImage && (
         <img src={eventImage} alt={name} className="w-full max-w-lg mx-auto" />
       )}
       <div className="px-4 py-2">
-        <p>
-          <strong>Type of Event:</strong> {typeOfEvent}
-        </p>
-        <p>
-          <strong>Description:</strong> {description}
-        </p>
-        <p>
-          <strong>Code of Conduct:</strong> {codeOfConduct}
-        </p>
-        <p>
-          <strong>Begin Time:</strong> {new Date(beginTime).toLocaleString()}
-        </p>
-        <p>
-          <strong>End Time:</strong> {new Date(endTime).toLocaleString()}
-        </p>
-        <p>
+        <p className="pt-3 pb-5">{description}</p>
+        <div
+          className="relative flex-col border border-solid overflow-hidden flex items-center justify-center p-5 mb-5"
+          style={{ borderColor: "var(--border-color)" }}
+        >
+          <p>
+            <span>Begin Time:</span> {new Date(beginTime).toLocaleString()}
+          </p>
+          <p>
+            <span>End Time:</span> {new Date(endTime).toLocaleString()}
+          </p>
+          {/* <p>
           <strong>Creator:</strong> {creator.name || "N/A"}
-        </p>
-        <p>
-          <strong>Location:</strong> {location || "N/A"}
-        </p>
-        <p>
-          <strong>Attendees:</strong> {attendees.length || 0}
-        </p>
+        </p> */}
+          <p>
+            <span>Location:</span> {location || "N/A"}
+          </p>
+          <p>
+            <span>Attendees:</span> {attendees.length || 0}
+          </p>
+        </div>
+        <h2>Code of Conduct</h2>
+        <p className="text-left">{codeOfConduct}</p>
         <div>
-          <h2 className="text-2xl font-semibold mt-4">Task Lists</h2>
-          <ul>
+          <h2 className="text-xl font-semibold mt-4">Task List</h2>
+          <div className="flex flex-row flex-wrap justify-center">
             {taskLists.map((task, index) => (
-              <li key={index}>{task.name}</li>
+              <TaskCard key={index} task={task} />
             ))}
-          </ul>
+          </div>
         </div>
         <div>
-          <h2 className="text-2xl font-semibold mt-4">Check List</h2>
+          <h2 className="text-xl font-semibold mt-4 mb-20">Check List</h2>
           <ul>
             {checkList.map((item, index) => (
               <li key={index}>{item.name}</li>
