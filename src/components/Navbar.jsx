@@ -3,6 +3,7 @@ import { useContext } from "react"; // <== IMPORT
 import { AuthContext } from "../context/auth.context"; // <== IMPORT
 import React from "react";
 import { useColorScheme } from "../context/ColorSchemeServices";
+import { useEffect } from "react";
 
 function Navbar() {
   const { currentScheme } = useColorScheme();
@@ -15,8 +16,6 @@ function Navbar() {
     logOutUser,
   } = useContext(AuthContext); // <== ADD
 
-  //  Update the rendering logic to display different content
-  //  depending on whether the user is logged in or not
   return (
     <nav
       className={`${navbarScheme.background} ${navbarScheme.text} flex justify-between items-center`}

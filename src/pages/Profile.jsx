@@ -14,6 +14,7 @@ function ProfilePage() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
+  const [successMessage, setSuccessMessage] = useState(undefined);
 
   const navigate = useNavigate();
 
@@ -71,17 +72,11 @@ function ProfilePage() {
         },
       })
       .then((response) => {
-        setUserName(response.data.user.userName);
-        // Assuming the response contains the updated user details
-        // storeToken(response.data.authToken); // If a new token is provided
-        // console.log(response.data.authToken);
-        // setUser(response.data.user); // Update user state in context
+        setSuccessMessage("Profile updated successfully!");
+        setUser(response.data.user); // Assuming the response contains the updated user details
         authenticateUser(); // Refresh the user data
-        // console.log(response.data.user);
-        // setUser(response.data.user);
       })
       .catch((error) => {
-        console.log("err", error);
         const errorDescription = error.response.data.message;
         setErrorMessage(errorDescription);
       });
@@ -139,6 +134,7 @@ function ProfilePage() {
           <button type="submit">▷ Update</button>
         </div>
       </form>
+      {successMessage && <p className="success-message">{successMessage}</p>}
       {errorMessage && <p className="error-message">{errorMessage}</p>}
     </div>
   );
