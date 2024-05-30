@@ -105,7 +105,13 @@ function SignupPage(props) {
       <form onSubmit={handleSignupSubmit}>
         <label>Email:</label>
         <br />
-        <input type="email" name="email" value={email} onChange={handleEmail} />
+        <input
+          type="email"
+          name="email"
+          value={email}
+          onChange={handleEmail}
+          className="input-field"
+        />
         <br />
         <br />
         <label>User Name:</label>
@@ -115,6 +121,7 @@ function SignupPage(props) {
           name="name"
           value={userName}
           onChange={handleUserName}
+          className="input-field"
         />
         <br />
         <br />
@@ -125,12 +132,19 @@ function SignupPage(props) {
           name="password"
           value={password}
           onChange={handlePassword}
+          className="input-field"
         />
         <br />
         <br />
         <label>Name:</label>
         <br />
-        <input type="text" name="name" value={name} onChange={handleName} />
+        <input
+          type="text"
+          name="name"
+          value={name}
+          onChange={handleName}
+          className="input-field"
+        />
         <br />
         <br />
         <label>Date of Birth:</label>
@@ -141,6 +155,7 @@ function SignupPage(props) {
           value={dateOfBirth}
           onChange={handleDateOfBirth}
           max={getTodayDate()}
+          className="input-field"
         />
         <br />
         <br />

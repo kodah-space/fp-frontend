@@ -76,15 +76,15 @@ function CommunityPage() {
         )}
         <p className="mb-4">{description}</p>
 
-        <h2 className="text-2xl font-bold mb-2">Manifesto</h2>
+        <h2 className="text-xl font-bold mb-2">Manifesto</h2>
         <p className="mb-4">{manifesto}</p>
 
         <div className="flex flex-col">
-          <h2 className="text-2xl font-bold mb-2">Events</h2>
+          <h2 className="text-xl font-bold">Events</h2>
           {isCreator && (
             <Link
               to={`../users/${user.UserName}/createEvent`}
-              className="create-btn"
+              className="create-btn px-0 mb-2"
             >
               ▷ create
             </Link>
@@ -99,11 +99,19 @@ function CommunityPage() {
           {errorMessage && <p className="text-red-500 mt-4">{errorMessage}</p>}
         </div>
         <div className="flex flex-col pb-20">
-          <h2 className="text-2xl font-bold mb-2">Members</h2>
-          <ul className="list-disc list-inside mb-4 flex flex-wrap justify-center">
+          <h2 className="text-xl font-bold mb-2">Members</h2>
+          <ul className="list-none list-inside mb-4 flex flex-wrap justify-center">
             {members.map((member, index) => (
-              <li key={index} className="mr-4">
-                {member.name}
+              <li
+                key={member._id}
+                className="mr-4 flex items-center flex-col p-2"
+              >
+                <img
+                  src={member.profilePic}
+                  alt={member.name}
+                  className="w-16 h-16 rounded-full mr-2 object-cover p-1"
+                />
+                <span>{member.name}</span>
               </li>
             ))}
           </ul>

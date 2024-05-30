@@ -139,15 +139,17 @@ function UserPage() {
           </div>
         ))}
       </div>
-      <h2 className="px-4 pb-20">Tasks</h2>
-
+      <h2 className="px-4 pb-2">Tasks</h2>
       <div className="flex flex-row flex-wrap justify-center">
         {userContributingTasks.map((task) => (
           <div key={task._id}>
-            <TaskCard key={task._id} task={task} />
+            <Link to={`/events/${task.eventId}`}>
+              <TaskCard key={task._id} task={task} />
+            </Link>
           </div>
         ))}
       </div>
+      <div className="pb-20"></div>
     </div>
   );
 }

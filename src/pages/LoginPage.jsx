@@ -60,7 +60,14 @@ function LoginPage(props) {
       <form onSubmit={handleLoginSubmit}>
         <label>Email:</label>
         <br />
-        <input type="email" name="email" value={email} onChange={handleEmail} />
+        <input
+          type="email"
+          name="email"
+          value={email}
+          onChange={handleEmail}
+          className="input-field"
+        />
+        <br />
         <br />
         <label>Password:</label>
         <br />
@@ -69,6 +76,7 @@ function LoginPage(props) {
           name="password"
           value={password}
           onChange={handlePassword}
+          className="input-field"
         />
         <br />
         <br />
