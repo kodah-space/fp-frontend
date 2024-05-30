@@ -10,6 +10,7 @@ import EventServices from "../context/EventServices";
 import { useColorScheme } from "../context/ColorSchemeServices";
 import EventCard from "../components/EventCard";
 import Imprint from "./Imprint";
+import TaskServices from "../context/TaskServices";
 
 const API_URL = "http://localhost:5005";
 
@@ -81,6 +82,16 @@ function UserPage() {
     EventServices.getEventUserisAttending(user._id)
       .then((resp) => {
         console.log("Events user is a Attending", resp.data);
+        setUserJoinedEvents(resp.data);
+      })
+      .catch((error) => console.error("Failed to fetch data:", error));
+  }, [user._id]);
+
+  useEffect(() => {
+    console.log("Fetching tasks contributed user:", user._id);
+    TaskServices.getTaskContributedByUserId(user._id)
+      .then((resp) => {
+        console.log("tasks user is a contributing", resp.data);
         setUserJoinedEvents(resp.data);
       })
       .catch((error) => console.error("Failed to fetch data:", error));

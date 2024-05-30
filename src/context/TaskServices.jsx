@@ -29,6 +29,10 @@ class TaskServicesClass {
   deleteTaskById(id) {
     return this.api.delete("/tasks/" + id);
   }
+
+  getTaskContributedByUserId(userId) {
+    return this.api.get("/tasks/contibutionby/" + userId);
+  }
 }
 
 const TaskServices = new TaskServicesClass();
