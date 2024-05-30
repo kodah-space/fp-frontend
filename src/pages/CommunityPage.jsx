@@ -82,10 +82,18 @@ function CommunityPage() {
         </div>
         <div className="flex flex-col pb-20">
           <h2 className="text-2xl font-bold mb-2">Members</h2>
-          <ul className="list-disc list-inside mb-4 flex flex-wrap justify-center">
+          <ul className="list-none list-inside mb-4 flex flex-wrap justify-center">
             {members.map((member, index) => (
-              <li key={index} className="mr-4">
-                {member.name}
+              <li
+                key={member._id}
+                className="mr-4 flex items-center flex-col p-2"
+              >
+                <img
+                  src={member.profilePic}
+                  alt={member.name}
+                  className="w-16 h-16 rounded-full mr-2 object-cover p-1"
+                />
+                <span>{member.name}</span>
               </li>
             ))}
           </ul>

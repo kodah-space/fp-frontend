@@ -98,7 +98,7 @@ function EventPage() {
         <h2>Code of Conduct</h2>
         <p className="text-left">{codeOfConduct}</p>
         <div>
-          <h2 className="text-xl font-semibold mt-4">Task List</h2>
+          <h2 className="text-xl font-semibold mt-4 mb-2">Task List</h2>
           <div className="flex flex-row flex-wrap justify-center">
             {taskLists.map((task, index) => (
               <TaskCard key={index} task={task} />
