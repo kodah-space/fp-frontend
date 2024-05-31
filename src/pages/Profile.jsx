@@ -100,7 +100,7 @@ function ProfilePage() {
 
   return (
     <div
-      className={`${currentScheme.background} ${currentScheme.text} profile-form text-left h-screen flex flex-col  items-center`}
+      className={`${currentScheme.background} ${currentScheme.text} profile-form text-left min-h-screen flex flex-col  items-center`}
     >
       <form onSubmit={handleProfileUpdate}>
         <div>
